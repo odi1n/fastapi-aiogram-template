@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "pythonproject3"
+version = "0.1.0"
+description = ""
+authors = ["odi1n"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiogram = "^2.19"
+fastapi = "^0.74.1"
+uvicorn = {extras = ["standard"], version = "^0.17.5"}
+tortoise-orm = "0.17.8"
+asyncpg = "^0.25.0"
+aiosqlite = "0.17.0"
+aerich = "0.5.5"
+python-dotenv = "^0.19.2"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+pydantic = {extras = ["dotenv"], version = "^1.9.0"}
+
+
+[tool.poetry.dev-dependencies]
+
+
+[tool.aerich]
+tortoise_orm = "database.TORTOISE_ORM"
+location = "./migrations"
+src_folder = "./."
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

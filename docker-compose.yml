@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  postgres:
+    container_name: bin_db
+    image: postgres:14.2
+    restart: always
+    hostname: postgres
+    environment:
+      POSTGRES_DB: '${POSTGRES_DB}'
+      POSTGRES_USER: '${POSTGRES_USER}'
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD}'
+      POSTGRES_HOST: '${POSTGRES_HOST}'
+      POSTGRES_POST: '${POSTGRES_POST}'
+      CONFIGS: "listen_addresses:'*',max_replication_slots:5"
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres/:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  redis:
+    container_name: bin_redis
+    image: redis:5-alpine
+    restart: always
+    command: redis-server
+    ports:
+      - 6379:6379
